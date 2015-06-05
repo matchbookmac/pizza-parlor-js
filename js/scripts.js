@@ -6,7 +6,7 @@ $( document ).ready(function () {
   var order;
 
   $("#welcome-button").on('click', function (event) {
-    $(".contact-info").show();
+    $(".contact-info").slideDown();
     $("#welcome").hide();
   });
 
@@ -23,9 +23,9 @@ $( document ).ready(function () {
     var subscriberNum = $("#subscriber-num").val();
     order             = new Order(firstName, lastName, street, city, state, zip, areaCode, centralOffice, subscriberNum);
 
-    $(".contact-info").hide();
+    $(".contact-info").slideUp();
     $("#order-header").html("Create Your Pizza " + order.fullName() + "!")
-    $(".order-form").show();
+    $(".order-form").slideDown();
   });
 
   $('select').change(function() {
