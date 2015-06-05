@@ -3,9 +3,14 @@
 
 //jQuery
 $( document ).ready(function () {
-    console.log( "jQuery Ready" );
+  $("#welcome-button").on('click', function (event) {
+    $("form#contact-info").show();
+    $("#welcome").hide();
+  });
 
-    $("#jqtest").text('jQuery Ready')
+  $("form#contact-info").submit(function () {
+
+  });
 });
 
 //raw js

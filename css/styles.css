@@ -5,3 +5,11 @@
   display: flex;
   align-items: center;
 }
+
+#contact-info {
+  display: none;
+}
+
+.stretch {
+  width: 100%;
+}
