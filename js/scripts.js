@@ -3,13 +3,38 @@
 
 //jQuery
 $( document ).ready(function () {
+  var order;
+
   $("#welcome-button").on('click', function (event) {
     $("form#contact-info").show();
     $("#welcome").hide();
   });
 
   $("form#contact-info").submit(function () {
+    event.preventDefault();
+    var firstName     = $("#first-name").val();
+    var lastName      = $("#last-name").val();
+    var street        = $("#street").val();
+    var city          = $("#city").val();
+    var state         = $("#state").val();
+    var zip           = $("#zip").val();
+    var areaCode      = $("#area-code").val();
+    var centralOffice = $("#central-office").val();
+    var subscriberNum = $("#subscriber-num").val();
+    order             = new Order(firstName, lastName, street, city, state, zip, areaCode, centralOffice, subscriberNum);
 
+    $("#contact-info").hide();
+    $("#order-form").show();
+  });
+
+  $("form#order-form").submit(function (event) {
+    event.preventDefault();
+    var size     = $("#size").val();
+    var crust    = $("#crust").val();
+    var sauce    = $("#sauce").val();
+    var toppings = new Toppings($("#toppings").val());
+    var pizza    = new Pizza(size, crust, sauce, toppings);
+    order.save(pizza);
   });
 });
 

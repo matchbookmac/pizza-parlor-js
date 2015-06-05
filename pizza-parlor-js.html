@@ -11,7 +11,7 @@
     <!-- jQuery -->
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <!-- bootstrap js -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> -->
     <!-- Custom Scripts -->
     <script src="js/scripts.js"></script>
 
@@ -81,6 +81,72 @@
           </div>
           <br>
           <button type="submit" id="contact-submit" class="col-sm-8 col-sm-offset-3 btn btn-primary">Continue</button>
+        </form>
+
+        <!-- Order Form -->
+        <form id="order-form">
+          <div class="form-horizontal">
+            <div class="form-group">
+              <label for="size" class="col-sm-3 control-label">Size</label>
+              <div class="col-sm-8">
+                <select type="text" name="size" id="size" class="form-control" required autofocus>
+                  <option value="">Please Select</option>
+                  <option value="S">Small</option>
+                  <option value="M">Medium</option>
+                  <option value="L">Large</option>
+                  <option value="XL">Extra-Large</option>
+                  <option value="Let's Get Serious">Let's Get Serious</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="crust" class="col-sm-3 control-label">Crust</label>
+              <div class="col-sm-8">
+                <select type="text" name="crust" id="crust" class="form-control" required autofocus>
+                  <option value="">Please Select</option>
+                  <option value="Regular">Regular</option>
+                  <option value="Thin">Thin</option>
+                  <option value="Thicker Than Usual">Thicker Than Usual</option>
+                  <option value="All of the Cheese">All of the Cheese</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-horizontal">
+            <div class="form-group">
+              <label for="sauce" class="col-sm-3 control-label">Sauce</label>
+              <div class="col-sm-8">
+                <select type="text" name="sauce" id="sauce" class="form-control" required autofocus>
+                  <option value="">Please Select</option>
+                  <option value="Red">Red</option>
+                  <option value="Pesto">Pesto</option>
+                  <option value="Alfredo">Alfredo</option>
+                  <option value="Surprise Me">Surprise Me</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-horizontal">
+            <div class="form-group">
+              <label for="toppings" class="col-sm-3 control-label">Toppings</label>
+              <div class="col-sm-8">
+                <select multiple type="text" name="toppings" id="toppings" class="form-control" required autofocus>
+                  <option value="Pepperoni">Pepperoni</option>
+                  <option value="Cheese">Cheese</option>
+                  <option value="Sausage">Sausage</option>
+                  <option value="Ham">Ham</option>
+                  <option value="Bacon">Bacon</option>
+                  <option value="Mushrooms">Mushrooms</option>
+                  <option value="Olives">Olives</option>
+                  <option value="Peppers">Peppers</option>
+                  <option value="Peperoncinis">Peperoncinis</option>
+                  <option value="All of the Meat">All of the Meat</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <br>
+          <button type="submit" id="order-submit" class="col-sm-8 col-sm-offset-3 btn btn-primary">Continue</button>
         </form>
       </div>
     </div>

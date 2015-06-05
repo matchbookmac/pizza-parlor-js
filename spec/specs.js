@@ -1,6 +1,6 @@
 describe('Toppings', function () {
   it('has many toppings', function () {
-    var toppings = new Toppings('sausage', 'moar sausage', 'cheese');
+    var toppings = new Toppings(['sausage', 'moar sausage', 'cheese']);
     expect(toppings[0]).to.equal("sausage");
     expect(toppings[1]).to.equal("moar sausage");
     expect(toppings[2]).to.equal("cheese");
