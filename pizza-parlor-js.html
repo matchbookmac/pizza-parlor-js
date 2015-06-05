@@ -29,33 +29,55 @@
 
         <!-- Contact Info -->
         <form id="contact-info">
-          <div class="form-group">
-            <label for="first-name">First Name</label>
-            <input type="text" name="first-name" id="first-name" class="form-control" required autofocus>
+          <div class="form-horizontal">
+            <div class="form-group">
+              <label for="first-name" class="col-sm-3 control-label">First Name</label>
+              <div class="col-sm-8">
+                <input type="text" name="first-name" id="first-name" class="form-control" required autofocus>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="last-name" class="col-sm-3 control-label">Last Name</label>
+              <div class="col-sm-8">
+                <input type="text" name="last-name" id="last-name" class="form-control" required>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="first-name">First Name</label>
-            <input type="text" name="first-name" id="first-name" class="form-control" required autofocus>
+          <div class="form-horizontal">
+            <div class="form-group">
+              <label for="street" class="col-sm-3 control-label">Street Address</label>
+              <div class="col-sm-8">
+                <input type="text" name="street" id="street" class="form-control" required>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="first-name">First Name</label>
-            <input type="text" name="first-name" id="first-name" class="form-control" required autofocus>
+          <div class="form-horizontal">
+            <div class="form-group">
+              <label for="city" class="col-sm-3 control-label">City, State, Zip</label>
+              <div class="col-sm-8">
+                <div class="form-inline">
+                  <input type="text" name="city" id="city" class="form-control" placeholder="City" required>
+                  <label for="state" class="sr-only">State</label>
+                  <input type="text" name="state" id="state" class="form-control" placeholder="State" maxlength="2" required>
+                  <label for="zip" class="sr-only">Zip Code</label>
+                  <input type="text" name="zip" id="zip" class="form-control" placeholder="Zip" maxlength="5" required>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="first-name">First Name</label>
-            <input type="text" name="first-name" id="first-name" class="form-control" required autofocus>
-          </div>
-          <div class="form-group">
-            <label for="first-name">First Name</label>
-            <input type="text" name="first-name" id="first-name" class="form-control" required autofocus>
-          </div>
-          <div class="form-group">
-            <label for="first-name">First Name</label>
-            <input type="text" name="first-name" id="first-name" class="form-control" required autofocus>
-          </div>
-          <div class="form-group">
-            <label for="first-name">First Name</label>
-            <input type="text" name="first-name" id="first-name" class="form-control" required autofocus>
+          <div class="form-inline">
+            <div id="phone" class="form-group">
+              <label for="phone" class="col-sm-3 control-label">Phone</label>
+              <span>(&nbsp</span>
+              <label for="area-code" class="sr-only">Area Code</label>
+              <input type="text" name="area-code" id="area-code" class="form-control" placeholder="000" maxlength="3" required>
+              <span>&nbsp)&nbsp</span>
+              <label for="central-office" class="sr-only">Central Office</label>
+              <input type="text" name="central-office" id="central-office" class="form-control" placeholder="000" maxlength="3" required>
+              <span>&nbsp-&nbsp</span>
+              <label for="subscriber-num" class="sr-only">Subscriber Number</label>
+              <input type="text" name="subscriber-num" id="subscriber-num" class="form-control" placeholder="0000" maxlength="4" required>
+            </div>
           </div>
         </form>
       </div>

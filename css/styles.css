@@ -6,10 +6,32 @@
   align-items: center;
 }
 
+/* Stretch for buttons */
+.stretch {
+  width: 100%;
+}
+
+/* Contact Form*/
 #contact-info {
   display: none;
 }
 
-.stretch {
-  width: 100%;
+#city {
+  width: 45%;
+}
+
+#zip {
+  width: 32%;
+}
+
+#state {
+  width: 20%;
+}
+
+#area-code, #central-office {
+  width: 9.75%;
+}
+
+#subscriber-num {
+  width: 11%;
 }
