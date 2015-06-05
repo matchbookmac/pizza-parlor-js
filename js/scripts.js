@@ -9,6 +9,12 @@ $( document ).ready(function() {
 });
 
 //raw js
-var foo = function(bar) {
-  return false;
+function Toppings() {
+
+};
+
+function Pizza(crust, sauce, toppings) {
+  this.crust    = crust;
+  this.sauce    = sauce;
+  this.toppings = toppings;
 };
