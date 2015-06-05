@@ -11,11 +11,11 @@
   width: 100%;
 }
 
-/* Contact Form*/
-.contact-info {
+.contact-info, .pizza-order, .order-form, #price {
   display: none;
 }
 
+/* Contact Form*/
 #city {
   width: 45%;
 }
@@ -38,9 +38,4 @@
 
 #subscriber-num {
   width: 11%;
-}
-
-/* Order Form */
-.order-form {
-  display: none;
 }

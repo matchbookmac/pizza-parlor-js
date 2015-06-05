@@ -66,6 +66,7 @@ function submitOrderForm(order) {
       '<td>$' + pizza.price() + '</td>' +
     '</tr>'
   );
+  $(".pizza-order").slideDown();
 };
 
 function updatePrice(order) {
@@ -74,10 +75,12 @@ function updatePrice(order) {
   var sauce    = $("#sauce").val();
   var toppings = $("#toppings").val();
   var pizza    = new Pizza(size, crust, sauce, toppings);
-  if (toppings) {    
-    var total = order.price() + pizza.price();
-    $("#price").html("Order Total: $" + total);
+  if (!toppings) {
+    toppings = [];
   }
+  var total = order.price() + pizza.price();
+  $("#price").html("Order Total: $" + total);
+  $("#price").slideDown();
 };
 
 function toppingsTable(pizza) {
