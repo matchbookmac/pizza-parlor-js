@@ -91,6 +91,22 @@ describe('Order', function () {
     });
   });
 
+  describe('cancel', function () {
+    it('clears the entire order', function () {
+      var toppings = ['sausage', 'moar sausage', 'cheese'];
+      var pizza    = new Pizza('Small', 'thick', 'red', toppings);
+      var pizza2   = new Pizza('small', 'thin', 'alfredo', toppings);
+      var order    = new Order('Ian', 'MacDonald', '123 Main St.', 'Portland', 'OR', '97214', '404', '111', '3333');
+      order.save(pizza);
+      order.save(pizza2);
+      order.cancel();
+      expect(order.pizzas).to.eql([]);
+      expect(order.name).to.eql('');
+      expect(order.phone).to.eql('');
+      expect(order.address).to.eql('');
+    });
+  });
+
   it('knows the first name of the person ordering', function () {
     var order = new Order('Ian');
     expect(order.firstName).to.equal('Ian');
@@ -151,7 +167,7 @@ describe('Order', function () {
   });
 
   describe('fullPhone', function () {
-    it('knows the full address of the person ordering', function () {
+    it('knows the full phone number of the person ordering', function () {
       var order = new Order('Ian', 'MacDonald', '123 Main St.', 'Portland', 'OR', '97214', '404', '111', '3333');
       expect(order.fullPhone()).to.equal('(404) 111-3333');
     });

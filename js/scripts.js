@@ -10,7 +10,7 @@ $( document ).ready(function () {
     $("#welcome").hide();
   });
 
-  $(".contact-info").submit(function () {
+  $("#contact-info").submit(function () {
     event.preventDefault();
     var firstName     = $("#first-name").val();
     var lastName      = $("#last-name").val();
@@ -26,6 +26,12 @@ $( document ).ready(function () {
     $(".contact-info").slideUp();
     $("#order-header").html("Create Your Pizza " + order.fullName() + "!")
     $(".order-form").slideDown();
+  });
+
+  $("#cancel-contact").on('click', function (event) {
+    $("form#contact-info").children().find('input').val('');
+    setTimeout(function () { $("#welcome").show() }, 350);
+    $(".contact-info").slideUp();
   });
 
   $('select').change(function() {
@@ -55,7 +61,7 @@ $( document ).ready(function () {
     $(".contact-info").slideDown();
   });
 
-  $(".order-form").submit(function (event) {
+  $("#order-form").submit(function (event) {
     event.preventDefault();
   });
 });
@@ -133,6 +139,9 @@ function Order(first, last, street, city, state, zip, areaCode, centralOffice, s
   this.areaCode      = areaCode;
   this.centralOffice = centralOffice;
   this.subscriberNum = subscriberNum;
+  this.name          = this.fullName();
+  this.phone         = this.fullPhone();
+  this.address       = this.fullAddress();
 };
 
 Order.prototype.save = function (pizza) {
@@ -155,6 +164,14 @@ Order.prototype.cancelPizza = function (pizza) {
     this.pizzas = [];
     this.numPizzas = 0;
   }
+};
+
+Order.prototype.cancel = function () {
+  var properties = Object.keys(this);
+  this.cancelPizza();
+  for (var i = 2; i < properties.length; i++) {
+    this[properties[i]] = '';
+  };
 };
 
 Order.prototype.fullName = function () {
