@@ -93,7 +93,7 @@
         <!-- Order Form -->
         <div class="panel panel-default order-form">
           <div class="panel-heading lead">
-            <p id="order-header">Create Your Pizza!</p>
+            <p id="order-header"></p>
           </div>
           <div class="panel-body">
             <form class="order-form">
@@ -154,7 +154,19 @@
                   </div>
                 </div>
               </div>
-              <div class="well" id="price">Order Total: $10</div>
+                <div class="well" id="price">Order Total: $10</div>
+                <div id="purchased-tickets-table">
+                  <h3 class="text-center">Your Order:</h3>
+                  <table id="pizza-order" class="table table-condensed">
+                    <tr>
+                      <th>Size:</th>
+                      <th>Crust:</th>
+                      <th>Sauce:</th>
+                      <th>Toppings:</th>
+                      <th>Cost:</th>
+                    </tr>
+                  </table>
+                </div>
               <br>
               <button type="submit" id="add-pizza" class="col-sm-4 btn btn-warning">Save and Add Another Pizza</button>
               <button type="submit" id="order-submit" class="col-sm-4 btn btn-primary">Continue</button>

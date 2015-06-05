@@ -34,24 +34,39 @@ $( document ).ready(function () {
 
   $("#order-submit").on('click', function (event) {
     $(".order-form").hide();
+    submitOrderForm(order);
     $(".final-checkout").show();
   });
 
   $("#add-pizza").on('click', function (event) {
-    $(".order-form").children().find('select').prop('selectedIndex', 0);
-    $(".final-checkout").show();
+    submitOrderForm(order);
+    setTimeout(function () { $(".order-form").children().find('select').prop('selectedIndex', 0); }, 500);
   });
 
   $(".order-form").submit(function (event) {
     event.preventDefault();
-    var size     = $("#size").val();
-    var crust    = $("#crust").val();
-    var sauce    = $("#sauce").val();
-    var toppings = $("#toppings").val();
-    var pizza    = new Pizza(size, crust, sauce, toppings);
-    order.save(pizza);
   });
 });
+
+function submitOrderForm(order) {
+  var size     = $("#size").val();
+  var crust    = $("#crust").val();
+  var sauce    = $("#sauce").val();
+  var toppings = $("#toppings").val();
+  var pizza    = new Pizza(size, crust, sauce, toppings);
+  order.save(pizza);
+  $("table#pizza-order").append(
+    '<tr>' +
+      '<td>' + pizza.crustSize + '</td>' +
+      '<td>' + pizza.crust + '</td>' +
+      '<td>' + pizza.sauce + '</td>' +
+      '<td>' +
+        toppingsTable(pizza) +
+      '</td>' +
+      '<td>$' + pizza.price() + '</td>' +
+    '</tr>'
+  );
+};
 
 function updatePrice(order) {
   var size     = $("#size").val();
@@ -59,9 +74,20 @@ function updatePrice(order) {
   var sauce    = $("#sauce").val();
   var toppings = $("#toppings").val();
   var pizza    = new Pizza(size, crust, sauce, toppings);
-  var total = order.price() + pizza.price();
-  $("#price").html("Order Total: $" + total);
+  if (toppings) {    
+    var total = order.price() + pizza.price();
+    $("#price").html("Order Total: $" + total);
+  }
 };
+
+function toppingsTable(pizza) {
+  var table = '<table>'
+    for (var i = 0; i < pizza.toppings.length; i++) {
+      table += '<tr><td>' + pizza.toppings[i] + '</td></tr>'
+    }
+  table += '</table>'
+  return table;
+}
 
 //raw js
 // Pizza
