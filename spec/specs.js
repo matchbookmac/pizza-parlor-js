@@ -1,29 +1,3 @@
-describe('Toppings', function () {
-  it('has many toppings', function () {
-    var toppings = new Toppings(['sausage', 'moar sausage', 'cheese']);
-    expect(toppings[0]).to.equal("sausage");
-    expect(toppings[1]).to.equal("moar sausage");
-    expect(toppings[2]).to.equal("cheese");
-  });
-
-  it('has only as many toppings as arguments', function () {
-    var toppings = new Toppings('sausage', 'moar sausage', 'cheese');
-    expect(toppings[0]).to.equal("sausage");
-    expect(toppings[1]).to.equal("moar sausage");
-    expect(toppings[2]).to.equal("cheese");
-    expect(typeof toppings[3]).to.equal("undefined");
-  });
-});
-
-describe('Object', function () {
-  describe('size', function () {
-    it('returns the length of the array of property names for a given Object', function () {
-      var toppings = new Toppings('sausage', 'moar sausage', 'cheese');
-      expect(Object.size(toppings)).to.equal(3);
-    })
-  })
-});
-
 describe('Pizza', function () {
   it("has a size", function () {
     var pizza = new Pizza('huge');
@@ -41,7 +15,7 @@ describe('Pizza', function () {
   });
 
   it("has toppings", function () {
-    var toppings = new Toppings('stuff', 'things');
+    var toppings = ['sausage', 'moar sausage', 'cheese'];
     var pizza    = new Pizza('huge', 'thick', 'red', toppings);
     expect(pizza.toppings).to.equal(toppings);
   });
@@ -50,7 +24,7 @@ describe('Pizza', function () {
 describe('Order', function () {
   describe('save', function () {
     it('saves a pizza to an order', function () {
-      var toppings = new Toppings('stuff', 'things');
+      var toppings = ['sausage', 'moar sausage', 'cheese'];
       var pizza    = new Pizza('huge', 'thick', 'red', toppings);
       var pizza2   = new Pizza('small', 'thin', 'alfredo', toppings);
       var order    = new Order();
@@ -62,7 +36,7 @@ describe('Order', function () {
 
   it('knows the number of pizzas in an order', function () {
     var order     = new Order();
-    var toppings  = new Toppings('stuff', 'things');
+    var toppings  = ['sausage', 'moar sausage', 'cheese'];
     var pizza     = new Pizza('huge', 'thick', 'red', toppings);
     var pizza2    = new Pizza('small', 'thin', 'alfredo', toppings);
     order.save(pizza);
