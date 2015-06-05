@@ -40,11 +40,18 @@ $( document ).ready(function () {
 
 //raw js
 // Pizza
+Pizza.prototype.sizes = { 'Small' : 1, 'Medium': 2, 'Large': 3, 'Extra-Large': 4, "Let's Get Serious": 5 };
+
 function Pizza(size, crust, sauce, toppings) {
+  this.size      = Pizza.prototype.sizes[size];
   this.crustSize = size;
   this.crust     = crust;
   this.sauce     = sauce;
   this.toppings  = toppings;
+};
+
+Pizza.prototype.price = function () {
+  return 10 + this.size + this.toppings.length;
 };
 
 // Order

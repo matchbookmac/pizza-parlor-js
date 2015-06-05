@@ -1,23 +1,40 @@
 describe('Pizza', function () {
-  it("has a size", function () {
-    var pizza = new Pizza('huge');
-    expect(pizza.crustSize).to.equal('huge');
+  it('has sizes', function () {
+    expect(Pizza.prototype.sizes).to.eql({ 'Small' : 1, 'Medium': 2, 'Large': 3, 'Extra-Large': 4, "Let's Get Serious": 5 });
+  })
+
+  it("has a size that is a number", function () {
+    var pizza = new Pizza('Small');
+    expect(pizza.size).to.equal(1);
+  });
+
+  it("has a size that is a string", function () {
+    var pizza = new Pizza('Small');
+    expect(pizza.crustSize).to.equal('Small');
   });
 
   it("has a crust type", function () {
-    var pizza = new Pizza('huge', 'thick');
+    var pizza = new Pizza('Small', 'thick');
     expect(pizza.crust).to.equal('thick');
   });
 
   it("has a sauce type", function () {
-    var pizza = new Pizza('huge', 'thick', 'red');
+    var pizza = new Pizza('Small', 'thick', 'red');
     expect(pizza.sauce).to.equal('red');
   });
 
   it("has toppings", function () {
     var toppings = ['sausage', 'moar sausage', 'cheese'];
-    var pizza    = new Pizza('huge', 'thick', 'red', toppings);
+    var pizza    = new Pizza('Small', 'thick', 'red', toppings);
     expect(pizza.toppings).to.equal(toppings);
+  });
+
+  describe('price', function () {
+    it('calculates the price of a pizza', function () {
+      var toppings = ['sausage', 'moar sausage', 'cheese'];
+      var pizza    = new Pizza('Small', 'thick', 'red', toppings);
+      expect(pizza.price()).to.equal(14);
+    });
   });
 });
 
@@ -25,7 +42,7 @@ describe('Order', function () {
   describe('save', function () {
     it('saves a pizza to an order', function () {
       var toppings = ['sausage', 'moar sausage', 'cheese'];
-      var pizza    = new Pizza('huge', 'thick', 'red', toppings);
+      var pizza    = new Pizza('Small', 'thick', 'red', toppings);
       var pizza2   = new Pizza('small', 'thin', 'alfredo', toppings);
       var order    = new Order();
       order.save(pizza);
@@ -37,8 +54,8 @@ describe('Order', function () {
   it('knows the number of pizzas in an order', function () {
     var order     = new Order();
     var toppings  = ['sausage', 'moar sausage', 'cheese'];
-    var pizza     = new Pizza('huge', 'thick', 'red', toppings);
-    var pizza2    = new Pizza('small', 'thin', 'alfredo', toppings);
+    var pizza     = new Pizza('Small', 'thick', 'red', toppings);
+    var pizza2    = new Pizza('Small', 'thin', 'alfredo', toppings);
     order.save(pizza);
     order.save(pizza2);
     expect(order.numPizzas).to.equal(2);
