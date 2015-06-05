@@ -32,7 +32,7 @@ $( document ).ready(function () {
     var size     = $("#size").val();
     var crust    = $("#crust").val();
     var sauce    = $("#sauce").val();
-    var toppings = new Toppings($("#toppings").val());
+    var toppings = $("#toppings").val();
     var pizza    = new Pizza(size, crust, sauce, toppings);
     order.save(pizza);
   });
