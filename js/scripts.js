@@ -74,6 +74,14 @@ Order.prototype.save = function (pizza) {
   this.numPizzas++;
 };
 
+Order.prototype.price = function () {
+  var total = 0;
+  for (var i = 0; i < this.pizzas.length; i++) {
+    total += this.pizzas[i].price();
+  };
+  return total;
+};
+
 Order.prototype.fullName = function () {
   return this.firstName + " " + this.lastName;
 };

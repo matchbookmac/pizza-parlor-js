@@ -61,6 +61,18 @@ describe('Order', function () {
     expect(order.numPizzas).to.equal(2);
   });
 
+  describe('price', function () {
+    it('knows the total cost of the order', function () {
+      var order     = new Order();
+      var toppings  = ['sausage', 'moar sausage', 'cheese'];
+      var pizza     = new Pizza('Small', 'thick', 'red', toppings);
+      var pizza2    = new Pizza('Large', 'thin', 'alfredo', toppings);
+      order.save(pizza);
+      order.save(pizza2);
+      expect(order.price()).to.equal(30);
+    });
+  })
+
   it('knows the first name of the person ordering', function () {
     var order = new Order('Ian');
     expect(order.firstName).to.equal('Ian');
