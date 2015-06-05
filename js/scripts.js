@@ -32,6 +32,7 @@ $( document ).ready(function () {
     $("form#contact-info").children().find('input').val('');
     setTimeout(function () { $("#welcome").show() }, 350);
     $(".contact-info").slideUp();
+    order.cancel();
   });
 
   $('select').change(function() {
