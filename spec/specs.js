@@ -62,6 +62,11 @@ describe('Order', function () {
   });
 
   describe('price', function () {
+    it('returns 0 if no pizzas are ordered', function () {
+      var order = new Order();
+      expect(order.price()).to.equal(0);
+    });
+
     it('knows the total cost of the order', function () {
       var order     = new Order();
       var toppings  = ['sausage', 'moar sausage', 'cheese'];

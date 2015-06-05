@@ -6,11 +6,11 @@ $( document ).ready(function () {
   var order;
 
   $("#welcome-button").on('click', function (event) {
-    $("form#contact-info").show();
+    $(".contact-info").show();
     $("#welcome").hide();
   });
 
-  $("form#contact-info").submit(function () {
+  $(".contact-info").submit(function () {
     event.preventDefault();
     var firstName     = $("#first-name").val();
     var lastName      = $("#last-name").val();
@@ -23,11 +23,25 @@ $( document ).ready(function () {
     var subscriberNum = $("#subscriber-num").val();
     order             = new Order(firstName, lastName, street, city, state, zip, areaCode, centralOffice, subscriberNum);
 
-    $("#contact-info").hide();
-    $("#order-form").show();
+    $(".contact-info").hide();
+    $(".order-form").show();
   });
 
-  $("form#order-form").submit(function (event) {
+  $('select').change(function() {
+    updatePrice(order);
+  });
+
+  $("#order-submit").on('click', function (event) {
+    $(".order-form").hide();
+    $(".final-checkout").show();
+  });
+
+  $("#add-pizza").on('click', function (event) {
+    $(".order-form").children().find('select').prop('selectedIndex', 0);
+    $(".final-checkout").show();
+  });
+
+  $(".order-form").submit(function (event) {
     event.preventDefault();
     var size     = $("#size").val();
     var crust    = $("#crust").val();
@@ -37,6 +51,16 @@ $( document ).ready(function () {
     order.save(pizza);
   });
 });
+
+function updatePrice(order) {
+  var size     = $("#size").val();
+  var crust    = $("#crust").val();
+  var sauce    = $("#sauce").val();
+  var toppings = $("#toppings").val();
+  var pizza    = new Pizza(size, crust, sauce, toppings);
+  var total = order.price() + pizza.price();
+  $("#price").html("Order Total: $" + total);
+};
 
 //raw js
 // Pizza
@@ -76,9 +100,11 @@ Order.prototype.save = function (pizza) {
 
 Order.prototype.price = function () {
   var total = 0;
-  for (var i = 0; i < this.pizzas.length; i++) {
-    total += this.pizzas[i].price();
-  };
+  if (this.pizzas.length > 0) {
+    for (var i = 0; i < this.pizzas.length; i++) {
+      total += this.pizzas[i].price();
+    };
+  }
   return total;
 };
 
