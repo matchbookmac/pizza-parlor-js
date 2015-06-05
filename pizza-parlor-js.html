@@ -33,7 +33,7 @@
             <p>Contact Info for Delivery</p>
           </div>
           <div class="panel-body">
-            <form class="contact-info">
+            <form id="contact-info">
               <div class="form-horizontal">
                 <div class="form-group">
                   <label for="first-name" class="col-sm-3 control-label">First Name</label>
@@ -96,7 +96,7 @@
             <p id="order-header"></p>
           </div>
           <div class="panel-body">
-            <form class="order-form">
+            <form id="order-form">
               <div class="form-horizontal">
                 <div class="form-group">
                   <label for="size" class="col-sm-3 control-label">Size</label>
@@ -176,8 +176,15 @@
                 </div>
               </div>
               <br>
-              <button type="submit" id="add-pizza" class="col-sm-4 btn btn-warning">Save and Add Another Pizza</button>
-              <button type="submit" id="order-submit" class="col-sm-4 btn btn-primary">Continue</button>
+                <div class="col-sm-4">
+                  <button type="submit" id="cancel-order" class="btn btn-danger stretch">Cancel</button>
+                </div>
+                <div class="col-sm-4">
+                  <button type="submit" id="add-pizza" class="btn btn-success stretch">Add to Order</button>
+                </div>
+                <div class="col-sm-4">
+                  <button type="submit" id="order-submit" class="btn btn-primary stretch">Continue</button>
+                </div>
             </form>
           </div>
         </div>

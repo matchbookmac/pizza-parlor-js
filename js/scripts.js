@@ -43,6 +43,18 @@ $( document ).ready(function () {
     setTimeout(function () { $(".order-form").children().find('select').prop('selectedIndex', 0); }, 500);
   });
 
+  $("#cancel-order").on('click', function () {
+    order.cancelPizza();
+    $(".order-form").children().find('select').prop('selectedIndex', 0);
+    updatePrice(order);
+    $(".pizza-order").hide();
+    $("#price").hide();
+    $("table#pizza-order").html("")
+    $("table#pizza-order").append('<tr><th>Size:</th><th>Crust:</th><th>Sauce:</th><th>Toppings:</th><th>Cost:</th></tr>')
+    $(".order-form").slideUp();
+    $(".contact-info").slideDown();
+  });
+
   $(".order-form").submit(function (event) {
     event.preventDefault();
   });
@@ -136,6 +148,13 @@ Order.prototype.price = function () {
     };
   }
   return total;
+};
+
+Order.prototype.cancelPizza = function (pizza) {
+  if (arguments.length === 0) {
+    this.pizzas = [];
+    this.numPizzas = 0;
+  }
 };
 
 Order.prototype.fullName = function () {

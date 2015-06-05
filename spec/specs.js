@@ -78,6 +78,19 @@ describe('Order', function () {
     });
   })
 
+  describe('cancelPizza', function () {
+    it('clears all pizzas from an order', function () {
+      var toppings = ['sausage', 'moar sausage', 'cheese'];
+      var pizza    = new Pizza('Small', 'thick', 'red', toppings);
+      var pizza2   = new Pizza('small', 'thin', 'alfredo', toppings);
+      var order    = new Order();
+      order.save(pizza);
+      order.save(pizza2);
+      order.cancelPizza();
+      expect(order.pizzas).to.eql([]);
+    });
+  });
+
   it('knows the first name of the person ordering', function () {
     var order = new Order('Ian');
     expect(order.firstName).to.equal('Ian');
