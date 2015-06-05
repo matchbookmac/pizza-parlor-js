@@ -24,6 +24,7 @@ $( document ).ready(function () {
     order             = new Order(firstName, lastName, street, city, state, zip, areaCode, centralOffice, subscriberNum);
 
     $(".contact-info").hide();
+    $("#order-header").html("Create Your Pizza " + order.fullName() + "!")
     $(".order-form").show();
   });
 
