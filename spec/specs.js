@@ -113,4 +113,26 @@ describe('Order', function () {
       expect(order.fullAddress()).to.equal('Ian MacDonald\n123 Main St.\nPortland, OR 97214');
     });
   });
+
+  it('knows the areaCode of the person ordering', function () {
+    var order = new Order('Ian', 'MacDonald', '123 Main St.', 'Portland', 'OR', '97214', '404');
+    expect(order.areaCode).to.equal('404');
+  });
+
+  it('knows the centralOffice of the person ordering', function () {
+    var order = new Order('Ian', 'MacDonald', '123 Main St.', 'Portland', 'OR', '97214', '404', '111');
+    expect(order.centralOffice).to.equal('111');
+  });
+
+  it('knows the subscriberNum of the person ordering', function () {
+    var order = new Order('Ian', 'MacDonald', '123 Main St.', 'Portland', 'OR', '97214', '404', '111', '3333');
+    expect(order.subscriberNum).to.equal('3333');
+  });
+
+  describe('fullPhone', function () {
+    it('knows the full address of the person ordering', function () {
+      var order = new Order('Ian', 'MacDonald', '123 Main St.', 'Portland', 'OR', '97214', '404', '111', '3333');
+      expect(order.fullPhone()).to.equal('(404) 111-3333');
+    });
+  });
 });

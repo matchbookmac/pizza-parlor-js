@@ -40,15 +40,18 @@ function Pizza(size, crust, sauce, toppings) {
 };
 
 // Order
-function Order(first, last, street, city, state, zip) {
-  this.pizzas    = [];
-  this.numPizzas = 0;
-  this.firstName = first;
-  this.lastName  = last;
-  this.street    = street;
-  this.city      = city;
-  this.state     = state;
-  this.zip       = zip;
+function Order(first, last, street, city, state, zip, areaCode, centralOffice, subscriberNum) {
+  this.pizzas        = [];
+  this.numPizzas     = 0;
+  this.firstName     = first;
+  this.lastName      = last;
+  this.street        = street;
+  this.city          = city;
+  this.state         = state;
+  this.zip           = zip;
+  this.areaCode      = areaCode;
+  this.centralOffice = centralOffice;
+  this.subscriberNum = subscriberNum;
 };
 
 Order.prototype.save = function (pizza) {
@@ -62,4 +65,8 @@ Order.prototype.fullName = function () {
 
 Order.prototype.fullAddress = function () {
   return this.firstName + ' ' + this.lastName + '\n' + this.street + '\n' + this.city + ', ' + this.state + ' ' + this.zip;
+};
+
+Order.prototype.fullPhone = function () {
+  return '(' + this.areaCode + ')' + ' ' + this.centralOffice + '-' + this.subscriberNum;
 };
