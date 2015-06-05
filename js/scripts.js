@@ -35,12 +35,26 @@ function Pizza(size, crust, sauce, toppings) {
 };
 
 // Order
-function Order() {
-  this.pizzas = [];
+function Order(first, last, street, city, state, zip) {
+  this.pizzas    = [];
   this.numPizzas = 0;
+  this.firstName = first;
+  this.lastName  = last;
+  this.street    = street;
+  this.city      = city;
+  this.state     = state;
+  this.zip       = zip;
 };
 
 Order.prototype.save = function (pizza) {
   this.pizzas.push(pizza);
   this.numPizzas++;
+};
+
+Order.prototype.fullName = function () {
+  return this.firstName + " " + this.lastName;
+};
+
+Order.prototype.fullAddress = function () {
+  return this.firstName + ' ' + this.lastName + '\n' + this.street + '\n' + this.city + ', ' + this.state + ' ' + this.zip;
 };

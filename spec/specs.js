@@ -68,5 +68,49 @@ describe('Order', function () {
     order.save(pizza);
     order.save(pizza2);
     expect(order.numPizzas).to.equal(2);
-  })
+  });
+
+  it('knows the first name of the person ordering', function () {
+    var order = new Order('Ian');
+    expect(order.firstName).to.equal('Ian');
+  });
+
+  it('knows the last name of the person ordering', function () {
+    var order = new Order('Ian', 'MacDonald');
+    expect(order.lastName).to.equal('MacDonald');
+  });
+
+  describe('fullName', function () {
+    it('knows the full name of the person ordering', function () {
+      var order = new Order('Ian', 'MacDonald');
+      expect(order.fullName()).to.equal('Ian MacDonald');
+    });
+  });
+
+  it('knows the street address of the person ordering', function () {
+    var order = new Order('Ian', 'MacDonald', '123 Main St.');
+    expect(order.street).to.equal('123 Main St.');
+  });
+
+  it('knows the City of the person ordering', function () {
+    var order = new Order('Ian', 'MacDonald', '123 Main St.', 'Portland');
+    expect(order.city).to.equal('Portland');
+  });
+
+  it('knows the State of the person ordering', function () {
+    var order = new Order('Ian', 'MacDonald', '123 Main St.', 'Portland', 'OR');
+    expect(order.state).to.equal('OR');
+  });
+
+  it('knows the Zip of the person ordering', function () {
+    var order = new Order('Ian', 'MacDonald', '123 Main St.', 'Portland', 'OR', '97214');
+    expect(order.zip).to.equal('97214');
+  });
+
+  describe('fullAddress', function () {
+    it('knows the full address of the person ordering', function () {
+      var order = new Order('Ian', 'MacDonald', '123 Main St.', 'Portland', 'OR', '97214');
+      expect(order.fullAddress()).to.equal('Ian MacDonald\n123 Main St.\nPortland, OR 97214');
+    });
+  });
 });
