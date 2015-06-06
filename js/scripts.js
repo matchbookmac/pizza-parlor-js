@@ -83,6 +83,14 @@ $( document ).ready(function () {
     $(".checkout").slideUp();
     $("#success").show();
     order.cancel();
+    $(".order-form").children().find('select').prop('selectedIndex', 0);
+    updatePrice(order);
+    $(".pizza-order").hide();
+    $("#price").hide();
+    $("table#pizza-order").html("")
+    $("table#pizza-order").append('<tr><th>Size:</th><th>Crust:</th><th>Sauce:</th><th>Toppings:</th><th>Cost:</th></tr>');
+    $(".order-form").slideUp();
+    $("form#contact-info").children().find('input').val('');
   })
 });
 
