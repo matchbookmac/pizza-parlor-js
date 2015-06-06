@@ -161,11 +161,11 @@
               </div>
               <div class="row">
                 <div class="col-sm-3">
-                  <div class="well" id="price">Order Total: $10</div>
+                  <div class="well" id="price">Order Total: $12</div>
                 </div>
                 <div class="col-sm-8">
                   <div class="well pizza-order">
-                    <div id="purchased-tickets-table">
+                    <div id="pending-order-table">
                       <h4 class="text-center">Your Order:</h4>
                       <table id="pizza-order" class="table table-condensed">
                         <tr>
@@ -181,18 +181,50 @@
                 </div>
               </div>
               <br>
-                <div class="col-sm-4">
-                  <button type="submit" id="cancel-order" class="btn btn-danger stretch">Cancel</button>
+              <div class="col-sm-4">
+                <button type="submit" id="cancel-order" class="btn btn-danger stretch">Cancel</button>
+              </div>
+              <div class="col-sm-4">
+                <button type="submit" id="add-pizza" class="btn btn-success stretch">Add to Order</button>
+              </div>
+              <div class="col-sm-4">
+                <div id="no-button">
+                  <fieldset disabled>
+                    <button type="submit" id="order-submit-no" class="btn btn-primary stretch">Continue</button>                    </fieldset>
                 </div>
-                <div class="col-sm-4">
-                  <button type="submit" id="add-pizza" class="btn btn-success stretch">Add to Order</button>
-                </div>
-                <div class="col-sm-4">
+                <div id="go-button">
                   <button type="submit" id="order-submit" class="btn btn-primary stretch">Continue</button>
                 </div>
+              </div>
             </form>
           </div>
         </div>
+
+        <!-- Checkout -->
+        <div class="panel panel-default checkout">
+          <div class="panel-heading lead">
+            <p id="checkout-header"></p>
+          </div>
+          <div class="panel-body">
+            <div class="well final-order">
+              <div id="final-order-table">
+                <h4 class="text-center">Your Order:</h4>
+                <table id="final-order" class="table table-condensed">
+                </table>
+              </div>
+            </div>
+            <br>
+            <div class="col-sm-4">
+              <button type="submit" id="cancel-final-order" class="btn btn-danger stretch">Cancel</button>
+            </div>
+            <div class="col-sm-8">
+              <button type="submit" id="checkout-submit" class="btn btn-success stretch">Order</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Success -->
+        <h3 class="text-center" id="success">Success!</h3>
       </div>
     </div>
   </body>

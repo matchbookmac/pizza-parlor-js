@@ -11,7 +11,7 @@
   width: 100%;
 }
 
-.contact-info, .pizza-order, .order-form, #price {
+.contact-info, .order-form, .pizza-order, .checkout, #go-button, #success {
   display: none;
 }
 

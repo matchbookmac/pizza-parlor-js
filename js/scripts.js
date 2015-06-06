@@ -40,14 +40,18 @@ $( document ).ready(function () {
   });
 
   $("#order-submit").on('click', function (event) {
-    $(".order-form").hide();
-    submitOrderForm(order);
-    $(".final-checkout").show();
+    $(".order-form").slideUp();
+    $("#checkout-header").html("Here's your final order, " + order.fullName());
+    // submitOrderForm(order);
+    $(".pizza-order").children().find('tr').clone().appendTo("#final-order");
+    $(".checkout").slideDown();
   });
 
   $("#add-pizza").on('click', function (event) {
     submitOrderForm(order);
     setTimeout(function () { $(".order-form").children().find('select').prop('selectedIndex', 0); }, 500);
+    $("#no-button").hide();
+    $("#go-button").show();
   });
 
   $("#cancel-order").on('click', function () {
@@ -57,7 +61,7 @@ $( document ).ready(function () {
     $(".pizza-order").hide();
     $("#price").hide();
     $("table#pizza-order").html("")
-    $("table#pizza-order").append('<tr><th>Size:</th><th>Crust:</th><th>Sauce:</th><th>Toppings:</th><th>Cost:</th></tr>')
+    $("table#pizza-order").append('<tr><th>Size:</th><th>Crust:</th><th>Sauce:</th><th>Toppings:</th><th>Cost:</th></tr>');
     $(".order-form").slideUp();
     $(".contact-info").slideDown();
   });
@@ -65,6 +69,21 @@ $( document ).ready(function () {
   $("#order-form").submit(function (event) {
     event.preventDefault();
   });
+
+  $("#cancel-final-order").on('click', function (event) {
+    $("#final-order").html("")
+    $("#checkout-header").html("");
+    $(".order-form").slideDown();
+    $(".checkout").slideUp();
+  });
+
+  $("#checkout-submit").on('click', function (event) {
+    $("#final-order").html("")
+    $("#checkout-header").html("");
+    $(".checkout").slideUp();
+    $("#success").show();
+    order.cancel();
+  })
 });
 
 function submitOrderForm(order) {
@@ -73,6 +92,9 @@ function submitOrderForm(order) {
   var sauce    = $("#sauce").val();
   var toppings = $("#toppings").val();
   var pizza    = new Pizza(size, crust, sauce, toppings);
+  if (!toppings) {
+    toppings = [];
+  }
   order.save(pizza);
   $("table#pizza-order").append(
     '<tr>' +
