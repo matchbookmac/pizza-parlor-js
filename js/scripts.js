@@ -43,7 +43,7 @@ $( document ).ready(function () {
     $(".order-form").slideUp();
     $("#checkout-header").html("Here's your final order, " + order.fullName());
     // submitOrderForm(order);
-    $(".pizza-order").children().find('tr').clone().appendTo("#final-order");
+    $(".pizza-order").children().clone().appendTo("#final-order");
     $(".checkout").slideDown();
   });
 
